@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS public.empresas (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     organizacao_id UUID NOT NULL,
     nome TEXT NOT NULL,
-    nif TEXT NOT NULL,
+    nuit TEXT NOT NULL,
     contacto TEXT,
     ativa BOOLEAN NOT NULL DEFAULT true,
     criado_por UUID,
@@ -28,14 +28,14 @@ CREATE TABLE IF NOT EXISTS public.empresas (
         REFERENCES public.utilizadores(id)
         ON DELETE SET NULL,
 
-    -- NIF único por organização (não global, para permitir mesma empresa em consultorias diferentes)
+    -- NUIT único por organização (não global, para permitir mesma empresa em consultorias diferentes)
     CONSTRAINT uk_empresas_nif_organizacao
-        UNIQUE (organizacao_id, nif)
+        UNIQUE (organizacao_id, nuit)
 );
 
 -- Comentários
 COMMENT ON TABLE public.empresas IS 'Empresas assistidas pela consultoria (clientes da contabilidade)';
-COMMENT ON COLUMN public.empresas.nif IS 'NIF português da empresa (9 dígitos)';
+COMMENT ON COLUMN public.empresas.nuit IS 'NUIT moçambicano da empresa (9 dígitos)';
 COMMENT ON COLUMN public.empresas.contacto IS 'Email ou telefone de contacto da empresa';
 
 -- ============================================
@@ -43,7 +43,7 @@ COMMENT ON COLUMN public.empresas.contacto IS 'Email ou telefone de contacto da 
 -- ============================================
 
 CREATE INDEX IF NOT EXISTS idx_empresas_organizacao ON public.empresas(organizacao_id);
-CREATE INDEX IF NOT EXISTS idx_empresas_nif ON public.empresas(nif);
+CREATE INDEX IF NOT EXISTS idx_empresas_nif ON public.empresas(nuit);
 CREATE INDEX IF NOT EXISTS idx_empresas_ativa ON public.empresas(ativa);
 CREATE INDEX IF NOT EXISTS idx_empresas_nome ON public.empresas USING gin (nome gin_trgm_ops);
 

@@ -74,10 +74,10 @@ Sistema de gestão documental multi-tenant para consultorias de contabilidade, c
 
 ### 2.4 Pesquisa e Listagem
 
-- Lista de empresas com filtros: nome, NIF
+- Lista de empresas com filtros: nome, NUIT
 - Página da empresa → lista de documentos agrupados por ano
 - Filtros de documentos: tipo, ano, período, estado
-- Pesquisa simples no topo (por nome da empresa, NIF, tipo de documento)
+- Pesquisa simples no topo (por nome da empresa, NUIT, tipo de documento)
 - **Sem pesquisa full-text dentro do conteúdo do PDF**
 
 ### 2.5 Auditoria

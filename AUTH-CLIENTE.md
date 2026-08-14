@@ -37,11 +37,11 @@
 | **Expiração** | 1 hora (padrão Supabase) | Configurável (ex: 10 min) |
 | **Problema com antivírus** | Sim — scanners de email consomem o link | Não — código numérico |
 | **Experiência do cliente** | Abrir email → clicar link → esperar | Receber WhatsApp → digitar 6 dígitos |
-| **Adoção em Portugal** | Email é comum | WhatsApp é ubíquo |
+| **Adoção em Moçambique** | Email é comum | WhatsApp é ubíquo |
 | **Custo** | Gratuito (Supabase) | Custo da API WhatsApp (baixo) |
 | **Implementação** | Nativa no Supabase | Custom (não nativo) |
 
-**Decisão:** OTP via WhatsApp. Mais robusto, melhor experiência para o público-alvo (proprietários de empresas em Portugal).
+**Decisão:** OTP via WhatsApp. Mais robusto, melhor experiência para o público-alvo (proprietários de empresas em Moçambique).
 
 ---
 
@@ -75,7 +75,7 @@ otp_codes (
 
 ### 4.1 Evolution API (Recomendada — self-hosted ou SaaS)
 
-- Open source, muito usada em Portugal/Brasil
+- Open source, muito usada em Moçambique/Brasil
 - Suporta WhatsApp Business API via Baileys (não oficial) ou oficial
 - Preço: gratuito (self-hosted) ou ~€10-30/mês (SaaS)
 - Documentação: https://doc.evolution-api.com

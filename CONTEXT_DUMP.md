@@ -7,7 +7,7 @@
 
 ## 1. O que e o Evaludata
 
-Sistema de gestao documental multi-tenant para consultorias de contabilidade em Portugal.
+Sistema de gestao documental multi-tenant para consultorias de contabilidade em Moçambique.
 
 **Problema real resolvido:** Consultorias perdem tempo a procurar documentos fiscais (Comparativos IVA, Relatorios IRS, Extratos Bancarios) espalhados por pastas, emails e drives. O sistema centraliza, organiza por cliente/ano/tipo, e permite ao cliente aceder via portal.
 
@@ -52,13 +52,13 @@ Sistema de gestao documental multi-tenant para consultorias de contabilidade em 
 
 ```
 organizacoes          — consultorias (multi-tenant)
-  id, nome, nif, owner_id, pode_registar_clientes, ativa
+  id, nome, nuit, owner_id, pode_registar_clientes, ativa
 
 utilizadores          — todos os que tem login
   id, organizacao_id, email, nome, papel (enum), telemovel, ativo, criado_por
 
 empresas              — clientes da contabilidade
-  id, organizacao_id, nome, nif, contacto, ativa
+  id, organizacao_id, nome, nuit, contacto, ativa
 
 contabilista_empresas — matriz: quais empresas cada contabilista ve
   id, contabilista_id, empresa_id, atribuido_por
@@ -315,7 +315,7 @@ SESSION_SECRET=
 
 - Repositorio: https://github.com/MahSomething/Evaludata
 - Stack: Next.js 16 + Supabase + R2 + Tailwind v4 + shadcn/ui
-- Publico-alvo: Consultorias de contabilidade em Portugal
+- Publico-alvo: Consultorias de contabilidade em Moçambique
 - Multi-tenant: sim, com organization_id em todas as tabelas
 - Cliente externo: sim, portal com OTP WhatsApp
 - OCR: NAO (fase 2, se necessario)

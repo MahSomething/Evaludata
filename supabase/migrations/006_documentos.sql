@@ -113,7 +113,7 @@ CREATE INDEX IF NOT EXISTS idx_documentos_soft_delete ON public.documentos(data_
 
 -- Índice para busca por nome/tipo/notas (full-text search)
 CREATE INDEX IF NOT EXISTS idx_documentos_fts ON public.documentos 
-    USING gin (to_tsvector('portuguese', 
+    USING gin (to_tsvector('moçambicanoe', 
         COALESCE(ficheiro_nome, '') || ' ' || 
         COALESCE(tipo_documento, '') || ' ' ||
         COALESCE(notas, '')

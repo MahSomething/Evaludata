@@ -9,7 +9,7 @@
 CREATE TABLE IF NOT EXISTS public.organizacoes (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     nome TEXT NOT NULL,
-    nif TEXT UNIQUE NOT NULL,
+    nuit TEXT UNIQUE NOT NULL,
     owner_id UUID,
     pode_registar_clientes BOOLEAN NOT NULL DEFAULT false,
     ativa BOOLEAN NOT NULL DEFAULT true,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS public.organizacoes (
 COMMENT ON TABLE public.organizacoes IS 'Consultorias de contabilidade (multi-tenant)';
 COMMENT ON COLUMN public.organizacoes.id IS 'UUID único da organização';
 COMMENT ON COLUMN public.organizacoes.nome IS 'Nome comercial da consultoria';
-COMMENT ON COLUMN public.organizacoes.nif IS 'NIF português (9 dígitos)';
+COMMENT ON COLUMN public.organizacoes.nuit IS 'NUIT moçambicano (9 dígitos)';
 COMMENT ON COLUMN public.organizacoes.owner_id IS 'ID do utilizador Admin/Owner da consultoria';
 COMMENT ON COLUMN public.organizacoes.pode_registar_clientes IS 'Permissão controlada pelo Super Admin';
 COMMENT ON COLUMN public.organizacoes.ativa IS 'Soft delete / desativação';

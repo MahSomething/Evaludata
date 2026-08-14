@@ -1,7 +1,7 @@
 # SECURITY.md
 
 > Diretrizes de seguranca para o Sistema de Gestao Documental.
-> Dados processados: NIF, documentos fiscais, extratos bancarios, relatorios IRS/IVA.
+> Dados processados: NUIT, documentos fiscais, extratos bancarios, relatorios IRS/IVA.
 > Classificacao de risco: ALTO (dados pessoais + dados empresariais sensiveis).
 > Ultima atualizacao: 2026-08-14
 
@@ -11,7 +11,7 @@
 
 | Nivel | Dados | Protecao |
 |-------|-------|----------|
-| **CRITICO** | Documentos fiscais (IRS, IVA, extratos bancarios), NIF, contactos | Criptografia em repouso + transito, RLS estrita, auditoria completa |
+| **CRITICO** | Documentos fiscais (IRS, IVA, extratos bancarios), NUIT, contactos | Criptografia em repouso + transito, RLS estrita, auditoria completa |
 | **SENSIVEL** | Nomes, emails, telefones, logs de acesso | RLS, hashing, retencao limitada |
 | **INTERNO** | Metadados de documentos, configuracoes do sistema | RLS basica, acesso autenticado |
 
@@ -112,7 +112,7 @@
 
 - Supabase Postgres ja criptografa dados em repouso (AES-256).
 - R2/Cloudflare ja criptografa ficheiros em repouso.
-- Considerar criptografia adicional para campos ultra-sensiveis (ex: NIF) se necessario regulatorio.
+- Considerar criptografia adicional para campos ultra-sensiveis (ex: NUIT) se necessario regulatorio.
 
 ### 3.2 2FA para Admin e Super Admin
 
@@ -243,7 +243,7 @@
 
 ### 6.2 Ordem dos Contabilistas Certificados (OCC)
 
-- Retencao de documentos: minimo 10 anos (Codigo do IRC, art. 123).
+- Retencao de documentos: minimo 10 anos (Código do IRC de Moçambique, art. 123).
 - Sistema deve garantir integridade e nao repudio (assinatura digital futura).
 - Acesso restrito ao profissional e cliente (confidencialidade).
 

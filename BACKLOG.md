@@ -35,12 +35,12 @@
 | **Depende de** | — |
 
 **Descrição:**
-Criar migration `001_organizacoes.sql` com a tabela `organizacoes` (id, nome, nif, owner_id, pode_registar_clientes, ativa, criada_em).
+Criar migration `001_organizacoes.sql` com a tabela `organizacoes` (id, nome, nuit, owner_id, pode_registar_clientes, ativa, criada_em).
 
 **Critérios de Aceitação:**
 - [ ] Migration executa sem erros em `supabase db reset`
 - [ ] Colunas têm tipos corretos e constraints (NOT NULL onde aplicável)
-- [ ] Índice em `nif` (UNIQUE)
+- [ ] Índice em `nuit` (UNIQUE)
 - [ ] Tabela aparece no Supabase Studio local
 
 **Entregável:**
@@ -81,12 +81,12 @@ Criar migration `002_utilizadores.sql` com a tabela `utilizadores` (id, organiza
 | **Depende de** | DB-001, DB-002 |
 
 **Descrição:**
-Criar migration `003_empresas.sql` com a tabela `empresas` (id, organizacao_id, nome, nif, contacto, criado_por, criado_em).
+Criar migration `003_empresas.sql` com a tabela `empresas` (id, organizacao_id, nome, nuit, contacto, criado_por, criado_em).
 
 **Critérios de Aceitação:**
 - [ ] FK para `organizacoes.id`
 - [ ] Índice em `organizacao_id`
-- [ ] UNIQUE em `nif` por organização (ou global? decidir)
+- [ ] UNIQUE em `nuit` por organização (ou global? decidir)
 
 **Entregável:**
 `supabase/migrations/003_empresas.sql`
@@ -328,7 +328,7 @@ Criar índice GIN para pesquisa full-text em `notas`, `ficheiro_nome`, `tipo_doc
 **Critérios de Aceitação:**
 - [ ] Índice `idx_documentos_fts` criado
 - [ ] Query `SELECT * FROM documentos WHERE to_tsvector(...) @@ to_tsquery(...)` retorna resultados em <100ms
-- [ ] Funciona com texto em português
+- [ ] Funciona com texto em moçambicano
 
 **Entregável:**
 `supabase/migrations/013_fulltext_index.sql`
@@ -648,7 +648,7 @@ Relatório de teste (checklist acima preenchida)
 Server Actions para criar, listar, editar e (soft) eliminar empresas. RLS garante isolamento.
 
 **Critérios de Aceitação:**
-- [ ] `criarEmpresa` — valida NIF, nome, cria com `organizacao_id` do admin
+- [ ] `criarEmpresa` — valida NUIT, nome, cria com `organizacao_id` do admin
 - [ ] `listarEmpresas` — retorna apenas empresas da org (RLS já filtra, mas validar)
 - [ ] `atualizarEmpresa` — apenas campos permitidos
 - [ ] `eliminarEmpresa` — soft delete (marca `ativo = false` ou cria estado)
@@ -669,12 +669,12 @@ Server Actions para criar, listar, editar e (soft) eliminar empresas. RLS garant
 | **Depende de** | BE-004, FE-002 |
 
 **Descrição:**
-Tabela de empresas com filtros (nome, NIF), paginação, botão "Nova Empresa".
+Tabela de empresas com filtros (nome, NUIT), paginação, botão "Nova Empresa".
 
 **Critérios de Aceitação:**
-- [ ] Tabela mostra nome, NIF, contacto, número de documentos
+- [ ] Tabela mostra nome, NUIT, contacto, número de documentos
 - [ ] Filtro por nome funciona (debounce 300ms)
-- [ ] Filtro por NIF funciona
+- [ ] Filtro por NUIT funciona
 - [ ] Paginação (10 por página)
 - [ ] Botão "Nova Empresa" abre modal/drawer
 - [ ] Loading state enquanto carrega
@@ -698,7 +698,7 @@ Tabela de empresas com filtros (nome, NIF), paginação, botão "Nova Empresa".
 Modal/drawer com formulário Zod para criar ou editar empresa.
 
 **Critérios de Aceitação:**
-- [ ] Campos: nome, NIF (validação de 9 dígitos), contacto (opcional)
+- [ ] Campos: nome, NUIT (validação de 9 dígitos), contacto (opcional)
 - [ ] Validação Zod em tempo real
 - [ ] Submit chama Server Action
 - [ ] Sucesso: fecha modal, atualiza tabela (revalidate ou optimistic)
@@ -771,8 +771,8 @@ Na página do contabilista (ou num modal), interface para selecionar/deseleciona
 Testar manualmente: criar empresa, editar, eliminar, atribuir a contabilista, verificar que contabilista só vê as atribuídas.
 
 **Critérios de Aceitação:**
-- [ ] Criar empresa com NIF válido → sucesso
-- [ ] Criar empresa com NIF inválido → erro de validação
+- [ ] Criar empresa com NUIT válido → sucesso
+- [ ] Criar empresa com NUIT inválido → erro de validação
 - [ ] Editar empresa → reflete na lista
 - [ ] Atribuir empresa A a contabilista X → X vê A no dashboard
 - [ ] Contabilista Y não vê A
@@ -1139,7 +1139,7 @@ Função `sendOtpWhatsApp(phone, code)` que chama a API Evolution.
 
 **Critérios de Aceitação:**
 - [ ] Envia mensagem com código de 6 dígitos
-- [ ] Mensagem em português, clara e profissional
+- [ ] Mensagem em moçambicano, clara e profissional
 - [ ] Retorna true/false (sucesso/erro)
 - [ ] Timeout de 10 segundos
 - [ ] Log de envio (sucesso/erro)

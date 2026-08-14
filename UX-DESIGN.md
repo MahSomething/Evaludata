@@ -220,7 +220,7 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
               
               [ Procurar...        ] [Filtro ]        
               
-              Nome          NIF        Docs    Ações       
+              Nome          NUIT        Docs    Ações       
               
               Empresa A     123456789   45     [] []  
               Empresa B     987654321   12     [] []  
@@ -482,7 +482,7 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 | OTP expirado | "Código expirado. Peça um novo código." | Botão "Reenviar" |
 | Sessão expirada | "A sua sessão expirou. Por favor, entre novamente." | Redirect para login |
 
-**Regra:** Mensagens em português, diretas, sem jargon técnico. "Erro 500" → "Algo correu mal. Tente novamente."
+**Regra:** Mensagens em moçambicano, diretas, sem jargon técnico. "Erro 500" → "Algo correu mal. Tente novamente."
 
 ---
 
@@ -543,5 +543,5 @@ Antes de marcar qualquer tarefa de frontend como `DONE`, verificar:
 - [ ] Formulários têm validação em tempo real?
 - [ ] Mobile: todos os botões são tocáveis (min 44x44px)?
 - [ ] Feedback visual em <300ms para qualquer ação?
-- [ ] Textos estão em português, sem jargon técnico?
+- [ ] Textos estão em moçambicano, sem jargon técnico?
 - [ ] Empty states têm uma ação clara?

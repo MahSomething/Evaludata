@@ -382,14 +382,14 @@ Sem OCR, usar PostgreSQL Full-Text Search nativo:
 
 ```sql
 CREATE INDEX idx_documentos_search ON documentos
-  USING gin(to_tsvector('portuguese', 
+  USING gin(to_tsvector('moçambicanoe', 
     coalesce(notas, '') || ' ' || 
     coalesce(ficheiro_nome, '') || ' ' ||
     coalesce(tipo_documento, '')
   ));
 ```
 
-Pesquisa: `to_tsquery('portuguese', 'comparativo & iva & 2023')`
+Pesquisa: `to_tsquery('moçambicanoe', 'comparativo & iva & 2023')`
 
 ---
 
