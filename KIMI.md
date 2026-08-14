@@ -1,4 +1,4 @@
-# CLAUDE.md
+# KIMI.md
 
 > Convenções técnicas e boas práticas para o projeto.
 > Este ficheiro existe para que qualquer IA (ou developer) que interaja com o código não sugira padrões desatualizados ou incorretos.
