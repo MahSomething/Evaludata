@@ -123,26 +123,26 @@ export function generateFileKey(
 ### 5.1 Diagrama
 
 ```
-┌─────────────┐     1. Pedir signed URL     ┌──────────────┐
-│   Cliente   │ ───────────────────────────> │ Server Action│
-│  (Browser)  │                              │  (Next.js)   │
-└─────────────┘                              └──────────────┘
-      │                                              │
-      │     2. Retorna signed URL + documentoId     │
-      │ <────────────────────────────────────────────│
-      │                                              │
-      │     3. Upload direto para R2 (PUT)          │
-      │ ───────────────────────────────────────────> │
-      │              (R2 Cloudflare)                 │
-      │                                              │
-      │     4. Sucesso (HTTP 200)                   │
-      │ <────────────────────────────────────────────│
-      │                                              │
-      │     5. Confirmar upload + metadados         │
-      │ ───────────────────────────────────────────> │
-      │                                              │
-      │     6. Cria registo na BD (documentos)      │
-      │ <────────────────────────────────────────────│
+     1. Pedir signed URL     
+   Cliente    >  Server Action
+  (Browser)                                  (Next.js)   
+                              
+                                                    
+           2. Retorna signed URL + documentoId     
+       <
+                                                    
+           3. Upload direto para R2 (PUT)          
+       > 
+                    (R2 Cloudflare)                 
+                                                    
+           4. Sucesso (HTTP 200)                   
+       <
+                                                    
+           5. Confirmar upload + metadados         
+       > 
+                                                    
+           6. Cria registo na BD (documentos)      
+       <
 ```
 
 ### 5.2 Server Action — Gerar Signed URL
@@ -387,14 +387,14 @@ serve(async () => {
 
 ```
 bucket: documentos-consultoria
-├── organizacao-uuid-1/
-│   ├── empresa-uuid-a/
-│   │   ├── documento-uuid-1.pdf
-│   │   └── documento-uuid-2.jpg
-│   └── empresa-uuid-b/
-│       └── documento-uuid-3.pdf
-└── organizacao-uuid-2/
-    └── ...
+ organizacao-uuid-1/
+    empresa-uuid-a/
+       documento-uuid-1.pdf
+       documento-uuid-2.jpg
+    empresa-uuid-b/
+        documento-uuid-3.pdf
+ organizacao-uuid-2/
+     ...
 ```
 
 **Vantagem:** Fácil de navegar manualmente no R2 dashboard se necessário. Isolamento por organização.

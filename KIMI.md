@@ -24,46 +24,46 @@
 
 ```
 app/
-├── (auth)/
-│   ├── login/
-│   │   └── page.tsx
-│   └── layout.tsx
-├── (dashboard)/
-│   ├── layout.tsx              # Layout com sidebar/nav (admin/contabilista)
-│   ├── page.tsx                # Dashboard redirect
-│   ├── empresas/
-│   ├── documentos/
-│   ├── utilizadores/
-│   └── aprovacoes/
-├── (portal)/
-│   ├── layout.tsx              # Layout minimalista (cliente)
-│   └── page.tsx                # Portal do cliente
-├── api/
-│   └── ...                     # Route handlers apenas quando necessário
-├── layout.tsx                  # Root layout
-└── globals.css                 # Tailwind v4 config (@theme)
+ (auth)/
+    login/
+       page.tsx
+    layout.tsx
+ (dashboard)/
+    layout.tsx              # Layout com sidebar/nav (admin/contabilista)
+    page.tsx                # Dashboard redirect
+    empresas/
+    documentos/
+    utilizadores/
+    aprovacoes/
+ (portal)/
+    layout.tsx              # Layout minimalista (cliente)
+    page.tsx                # Portal do cliente
+ api/
+    ...                     # Route handlers apenas quando necessário
+ layout.tsx                  # Root layout
+ globals.css                 # Tailwind v4 config (@theme)
 components/
-├── ui/                         # Componentes shadcn/ui (nunca editar diretamente a não ser para customizar)
-├── forms/                      # Formulários reutilizáveis
-├── tables/                     # Tabelas com filtros
-└── portal/                     # Componentes específicos do portal do cliente
+ ui/                         # Componentes shadcn/ui (nunca editar diretamente a não ser para customizar)
+ forms/                      # Formulários reutilizáveis
+ tables/                     # Tabelas com filtros
+ portal/                     # Componentes específicos do portal do cliente
 lib/
-├── supabase/
-│   ├── client.ts               # createBrowserClient (cliente)
-│   ├── server.ts               # createServerClient (server components / server actions)
-│   └── proxy.ts                # createServerClient para middleware (renomeado de middleware.ts em Next.js 16)
-├── storage/
-│   └── r2.ts                   # Cliente S3 para R2 + funções de signed URL
-├── whatsapp/
-│   └── otp.ts                  # Envio de OTP via WhatsApp API
-├── utils.ts                    # cn() e helpers
-└── validators.ts               # Zod schemas para formulários
+ supabase/
+    client.ts               # createBrowserClient (cliente)
+    server.ts               # createServerClient (server components / server actions)
+    proxy.ts                # createServerClient para middleware (renomeado de middleware.ts em Next.js 16)
+ storage/
+    r2.ts                   # Cliente S3 para R2 + funções de signed URL
+ whatsapp/
+    otp.ts                  # Envio de OTP via WhatsApp API
+ utils.ts                    # cn() e helpers
+ validators.ts               # Zod schemas para formulários
 types/
-└── database.ts                 # Tipos gerados pelo Supabase (supabase gen types)
+ database.ts                 # Tipos gerados pelo Supabase (supabase gen types)
 supabase/
-├── migrations/                 # Migrations versionadas (supabase db diff)
-├── functions/                  # Edge Functions (cleanup, etc.)
-└── seed.sql                    # Dados iniciais (Super Admin)
+ migrations/                 # Migrations versionadas (supabase db diff)
+ functions/                  # Edge Functions (cleanup, etc.)
+ seed.sql                    # Dados iniciais (Super Admin)
 ```
 
 ---
@@ -215,9 +215,9 @@ Toda a configuração fica em `app/globals.css`:
 
 ### 5.2 NÃO fazer
 
-- ❌ Criar `tailwind.config.js` ou `tailwind.config.ts`
-- ❌ Usar sintaxe v3 (`@tailwind base; @tailwind components; @tailwind utilities;`)
-- ❌ Usar `theme.extend` — usar `@theme` diretamente
+-  Criar `tailwind.config.js` ou `tailwind.config.ts`
+-  Usar sintaxe v3 (`@tailwind base; @tailwind components; @tailwind utilities;`)
+-  Usar `theme.extend` — usar `@theme` diretamente
 
 ---
 
@@ -319,12 +319,12 @@ Nota: Em projetos Supabase mais recentes, a "anon key" pode aparecer como "publi
 Em Next.js 16, `params` e `searchParams` de `page.tsx` são **assíncronos**.
 
 ```tsx
-// ❌ Antigo (Next.js 14/15)
+//  Antigo (Next.js 14/15)
 export default function Page({ params }: { params: { id: string } }) {
   return <div>{params.id}</div>;
 }
 
-// ✅ Next.js 16
+//  Next.js 16
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   return <div>{id}</div>;
@@ -413,20 +413,20 @@ const channel = supabase
 
 | Não fazer | Porquê |
 |-----------|--------|
-| ❌ Usar Pages Router | Obsoleto em Next.js 16 |
-| ❌ Criar `middleware.ts` | Renomeado para `proxy.ts` em Next.js 16 |
-| ❌ Criar `tailwind.config.js` | Tailwind v4 usa CSS config |
-| ❌ Usar `@supabase/supabase-js` diretamente em Next.js | Usar `@supabase/ssr` |
-| ❌ Desativar RLS em tabelas | Quebra de segurança em multi-tenant |
-| ❌ Fazer queries Supabase em Client Components sem validação | Expor dados indevidamente |
-| ❌ Usar `useEffect` para fetch inicial de dados | Usar Server Components + `await` |
-| ❌ Guardar secrets em `localStorage` | Usar cookies httpOnly via Supabase Auth |
-| ❌ Fazer upload direto para Supabase Storage sem validação de tipo/tamanho | Validar no server action antes |
-| ❌ Usar `any` em TypeScript | Tipar tudo, incluir `types/database.ts` do Supabase |
-| ❌ Fazer upload via Server Action (ficheiros > 1MB) | Usar signed URLs do R2 |
-| ❌ Usar subqueries em RLS policies | Usar Custom Claims no JWT |
-| ❌ Criar tabelas em produção sem migration | Usar Supabase CLI sempre |
-| ❌ Confiança em `file.type` do browser | Validar magic bytes no servidor |
+|  Usar Pages Router | Obsoleto em Next.js 16 |
+|  Criar `middleware.ts` | Renomeado para `proxy.ts` em Next.js 16 |
+|  Criar `tailwind.config.js` | Tailwind v4 usa CSS config |
+|  Usar `@supabase/supabase-js` diretamente em Next.js | Usar `@supabase/ssr` |
+|  Desativar RLS em tabelas | Quebra de segurança em multi-tenant |
+|  Fazer queries Supabase em Client Components sem validação | Expor dados indevidamente |
+|  Usar `useEffect` para fetch inicial de dados | Usar Server Components + `await` |
+|  Guardar secrets em `localStorage` | Usar cookies httpOnly via Supabase Auth |
+|  Fazer upload direto para Supabase Storage sem validação de tipo/tamanho | Validar no server action antes |
+|  Usar `any` em TypeScript | Tipar tudo, incluir `types/database.ts` do Supabase |
+|  Fazer upload via Server Action (ficheiros > 1MB) | Usar signed URLs do R2 |
+|  Usar subqueries em RLS policies | Usar Custom Claims no JWT |
+|  Criar tabelas em produção sem migration | Usar Supabase CLI sempre |
+|  Confiança em `file.type` do browser | Validar magic bytes no servidor |
 
 ---
 

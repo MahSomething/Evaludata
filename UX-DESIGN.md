@@ -114,22 +114,22 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 ### 3.1 Dashboard (Admin + Contabilista)
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  [Logo]  Empresas  Documentos  Utilizadores  Aprovações [🔔] [Nome ▼] │
-│  ────────────────────────────────────────────────────────────│
-│  Sidebar (w-64)    │  Conteúdo principal                      │
-│  ┌──────────────┐  │                                        │
-│  │ Dashboard    │  │                                        │
-│  │ Empresas     │  │                                        │
-│  │ Documentos   │  │                                        │
-│  │ Utilizadores │  │                                        │
-│  │ Aprovações   │  │                                        │
-│  │   [3]        │  │                                        │
-│  │ Auditoria    │  │                                        │
-│  │ ──────────── │  │                                        │
-│  │ Configurações│  │                                        │
-│  └──────────────┘  │                                        │
-└─────────────────────────────────────────────────────────────┘
+
+  [Logo]  Empresas  Documentos  Utilizadores  Aprovações [] [Nome ] 
+  
+  Sidebar (w-64)      Conteúdo principal                      
+                                            
+   Dashboard                                              
+   Empresas                                               
+   Documentos                                             
+   Utilizadores                                           
+   Aprovações                                             
+     [3]                                                  
+   Auditoria                                              
+                                              
+   Configurações                                          
+                                            
+
 ```
 
 **Regras:**
@@ -141,29 +141,29 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 ### 3.2 Portal do Cliente
 
 ```
-┌─────────────────────────────────────────┐
-│  [Logo]                    [Sair]       │
-│  ───────────────────────────────────────│
-│                                         │
-│  Olá, [Nome]                            │
-│                                         │
-│  [Seletor de Empresa ▼]                 │
-│                                         │
-│  Documentos — [Nome da Empresa]         │
-│                                         │
-│  [Filtro: Todos ▼]  [Filtro: 2023 ▼]  │
-│                                         │
-│  ┌──────────────────────────────────┐   │
-│  │ 📄 Comparativo IVA 2023         │   │
-│  │    15/03/2023    [Download ↓]   │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-│  ┌──────────────────────────────────┐   │
-│  │ 📄 Extrato Bancário Jan/2023    │   │
-│  │    02/02/2023    [Download ↓]   │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-└─────────────────────────────────────────┘
+
+  [Logo]                    [Sair]       
+  
+                                         
+  Olá, [Nome]                            
+                                         
+  [Seletor de Empresa ]                 
+                                         
+  Documentos — [Nome da Empresa]         
+                                         
+  [Filtro: Todos ]  [Filtro: 2023 ]  
+                                         
+     
+    Comparativo IVA 2023            
+      15/03/2023    [Download ↓]      
+     
+                                         
+     
+    Extrato Bancário Jan/2023       
+      02/02/2023    [Download ↓]      
+     
+                                         
+
 ```
 
 **Regras:**
@@ -180,28 +180,28 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 ### 4.1 Login (Admin/Contabilista)
 
 ```
-┌─────────────────────────────────────────┐
-│                                         │
-│              [Logo]                     │
-│                                         │
-│         Aceder à Plataforma             │
-│                                         │
-│  Email                                  │
-│  ┌──────────────────────────────────┐   │
-│  │ admin@consultoria.pt             │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-│  Palavra-passe                          │
-│  ┌──────────────────────────────────┐   │
-│  │ ••••••••••••••••••••           │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-│  [        Entrar (loading...)      ]    │
-│                                         │
-│         Credenciais inválidas           │
-│              (mensagem de erro)         │
-│                                         │
-└─────────────────────────────────────────┘
+
+                                         
+              [Logo]                     
+                                         
+         Aceder à Plataforma             
+                                         
+  Email                                  
+     
+   admin@consultoria.pt                
+     
+                                         
+  Palavra-passe                          
+     
+   ••••••••••••••••••••              
+     
+                                         
+  [        Entrar (loading...)      ]    
+                                         
+         Credenciais inválidas           
+              (mensagem de erro)         
+                                         
+
 ```
 
 **Regras:**
@@ -215,19 +215,19 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 ### 4.2 Lista de Empresas (Admin)
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  [Sidebar] │  Empresas                          [+ Empresa] │
-│            │  ─────────────────────────────────────────────│
-│            │  [🔍 Procurar...        ] [Filtro ▼]        │
-│            │  ─────────────────────────────────────────────│
-│            │  Nome          NIF        Docs    Ações       │
-│            │  ─────────────────────────────────────────────│
-│            │  Empresa A     123456789   45     [👁] [✏]  │
-│            │  Empresa B     987654321   12     [👁] [✏]  │
-│            │  Empresa C     456789123    3     [👁] [✏]  │
-│            │  ─────────────────────────────────────────────│
-│            │  [< Anterior] Página 1 de 5 [Próxima >]     │
-└─────────────────────────────────────────────────────────────┘
+
+  [Sidebar]   Empresas                          [+ Empresa] 
+              
+              [ Procurar...        ] [Filtro ]        
+              
+              Nome          NIF        Docs    Ações       
+              
+              Empresa A     123456789   45     [] []  
+              Empresa B     987654321   12     [] []  
+              Empresa C     456789123    3     [] []  
+              
+              [< Anterior] Página 1 de 5 [Próxima >]     
+
 ```
 
 **Regras:**
@@ -242,25 +242,25 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 ### 4.3 Documentos da Empresa (Contabilista)
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  [Sidebar] │  Empresa A — Documentos          [+ Documento]│
-│            │  ─────────────────────────────────────────────│
-│            │  [🔍 Procurar...] [Tipo ▼] [Ano ▼] [Estado ▼]│
-│            │  ─────────────────────────────────────────────│
-│            │  ▼ 2023 (12 documentos)                       │
-│            │    ┌──────────────────────────────────────┐   │
-│            │    │ 📄 Comparativo IVA                   │   │
-│            │    │ Período: Dezembro  |  15/12/2023    │   │
-│            │    │ [Ativo]  [👁] [⬇] [🗑]              │   │
-│            │    └──────────────────────────────────────┘   │
-│            │    ┌──────────────────────────────────────┐   │
-│            │    │ 📄 Extrato Bancário                  │   │
-│            │    │ Período: Janeiro    |  02/01/2023    │   │
-│            │    │ [Ativo]  [👁] [⬇] [🔄 Submeter novo]│   │
-│            │    └──────────────────────────────────────┘   │
-│            │  ▶ 2022 (8 documentos)                        │
-│            │  ▶ 2021 (3 documentos)                        │
-└─────────────────────────────────────────────────────────────┘
+
+  [Sidebar]   Empresa A — Documentos          [+ Documento]
+              
+              [ Procurar...] [Tipo ] [Ano ] [Estado ]
+              
+               2023 (12 documentos)                       
+                   
+                  Comparativo IVA                      
+                 Período: Dezembro  |  15/12/2023       
+                 [Ativo]  [] [] []                 
+                   
+                   
+                  Extrato Bancário                     
+                 Período: Janeiro    |  02/01/2023       
+                 [Ativo]  [] [] [ Submeter novo]   
+                   
+               2022 (8 documentos)                        
+               2021 (3 documentos)                        
+
 ```
 
 **Regras:**
@@ -275,41 +275,41 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 ### 4.4 Upload de Documento (Modal)
 
 ```
-┌─────────────────────────────────────────┐
-│  Carregar Documento                [×]  │
-│  ───────────────────────────────────────│
-│                                         │
-│  Empresa *                              │
-│  ┌──────────────────────────────────┐   │
-│  │ Empresa A                        │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-│  Tipo de documento *                    │
-│  ┌──────────────────────────────────┐   │
-│  │ Comparativo IVA                  │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-│  Ano *        Período                   │
-│  ┌──────┐     ┌────────────────────┐    │
-│  │ 2023 │     │ Dezembro           │    │
-│  └──────┘     └────────────────────┘    │
-│                                         │
-│  Ficheiro *                             │
-│  ┌──────────────────────────────────┐   │
-│  │ [📎] Arraste ou clique para      │   │
-│  │      selecionar (PDF, JPG, PNG)  │   │
-│  └──────────────────────────────────┘   │
-│  comparativo_iva_dez_2023.pdf (2.4MB)   │
-│  [━━━━━━━━━━━━━━━░░░] 80%               │
-│                                         │
-│  Notas (opcional)                       │
-│  ┌──────────────────────────────────┐   │
-│  │                                  │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-│  [      Carregar (a enviar...)     ]    │
-│                                         │
-└─────────────────────────────────────────┘
+
+  Carregar Documento                [×]  
+  
+                                         
+  Empresa *                              
+     
+   Empresa A                           
+     
+                                         
+  Tipo de documento *                    
+     
+   Comparativo IVA                     
+     
+                                         
+  Ano *        Período                   
+           
+   2023       Dezembro               
+           
+                                         
+  Ficheiro *                             
+     
+   [] Arraste ou clique para         
+        selecionar (PDF, JPG, PNG)     
+     
+  comparativo_iva_dez_2023.pdf (2.4MB)   
+  [] 80%               
+                                         
+  Notas (opcional)                       
+     
+                                       
+     
+                                         
+  [      Carregar (a enviar...)     ]    
+                                         
+
 ```
 
 **Regras:**
@@ -325,23 +325,23 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 ### 4.5 Aprovações Pendentes (Admin)
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  [Sidebar] │  Aprovações Pendentes              [3]        │
-│            │  ─────────────────────────────────────────────│
-│            │  ┌──────────────────────────────────────┐     │
-│            │  │ 📄 Comparativo IVA — Empresa A       │     │
-│            │  │ Submetido por: Maria | 14/08 15:32   │     │
-│            │  │ Substitui: Comparativo IVA Dez 2023  │     │
-│            │  │                                      │     │
-│            │  │ [👁 Preview]  [✅ Aprovar]  [❌ Rejeitar]│  │
-│            │  └──────────────────────────────────────┘     │
-│            │  ┌──────────────────────────────────────┐     │
-│            │  │ 📄 Relatório IRS — Empresa B         │     │
-│            │  │ Submetido por: João  | 14/08 14:10   │     │
-│            │  │                                      │     │
-│            │  │ [👁 Preview]  [✅ Aprovar]  [❌ Rejeitar]│  │
-│            │  └──────────────────────────────────────┘     │
-└─────────────────────────────────────────────────────────────┘
+
+  [Sidebar]   Aprovações Pendentes              [3]        
+              
+                   
+                Comparativo IVA — Empresa A            
+               Submetido por: Maria | 14/08 15:32        
+               Substitui: Comparativo IVA Dez 2023       
+                                                         
+               [ Preview]  [ Aprovar]  [ Rejeitar]  
+                   
+                   
+                Relatório IRS — Empresa B              
+               Submetido por: João  | 14/08 14:10        
+                                                         
+               [ Preview]  [ Aprovar]  [ Rejeitar]  
+                   
+
 ```
 
 **Regras:**
@@ -356,32 +356,32 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 ### 4.6 Portal do Cliente — Login
 
 ```
-┌─────────────────────────────────────────┐
-│                                         │
-│           [Logo da Consultoria]         │
-│                                         │
-│         Portal do Cliente               │
-│                                         │
-│  Número de telemóvel                    │
-│  ┌──────────────────────────────────┐   │
-│  │ 351 912 345 678                  │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-│  [  Receber código no WhatsApp  ]       │
-│                                         │
-│  ────────  ou  ────────                 │
-│                                         │
-│  Código de acesso                       │
-│  ┌────┐ ┌────┐ ┌────┐ ┌────┐ ┌────┐ ┌────┐
-│  │ 4  │ │ 2  │ │ 9  │ │ 1  │ │ 7  │ │ 3  │
-│  └────┘ └────┘ └────┘ └────┘ └────┘ └────┘
-│                                         │
-│  [           Entrar            ]        │
-│                                         │
-│  Código expira em 09:32                 │
-│  [Reenviar código]                      │
-│                                         │
-└─────────────────────────────────────────┘
+
+                                         
+           [Logo da Consultoria]         
+                                         
+         Portal do Cliente               
+                                         
+  Número de telemóvel                    
+     
+   351 912 345 678                     
+     
+                                         
+  [  Receber código no WhatsApp  ]       
+                                         
+    ou                   
+                                         
+  Código de acesso                       
+       
+   4    2    9    1    7    3  
+       
+                                         
+  [           Entrar            ]        
+                                         
+  Código expira em 09:32                 
+  [Reenviar código]                      
+                                         
+
 ```
 
 **Regras:**
@@ -398,40 +398,40 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 ### 4.7 Portal do Cliente — Documentos
 
 ```
-┌─────────────────────────────────────────┐
-│  [Logo]                    [Sair]       │
-│  ───────────────────────────────────────│
-│                                         │
-│  Olá, António Silva                     │
-│                                         │
-│  ┌──────────────────────────────────┐   │
-│  │ 📋 Selecionar empresa            │   │
-│  │ ▼ Empresa A, Lda.               │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-│  Documentos — Empresa A                 │
-│                                         │
-│  [Todos ▼]  [2023 ▼]                  │
-│                                         │
-│  ┌──────────────────────────────────┐   │
-│  │ 📄 Comparativo IVA              │   │
-│  │ Dezembro 2023                   │   │
-│  │ 15/12/2023                      │   │
-│  │                                 │   │
-│  │    [  ⬇ Download  ]             │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-│  ┌──────────────────────────────────┐   │
-│  │ 📄 Extrato Bancário             │   │
-│  │ Janeiro 2023                    │   │
-│  │ 02/01/2023                      │   │
-│  │                                 │   │
-│  │    [  ⬇ Download  ]             │   │
-│  └──────────────────────────────────┘   │
-│                                         │
-│  Nenhum documento para 2022             │
-│                                         │
-└─────────────────────────────────────────┘
+
+  [Logo]                    [Sair]       
+  
+                                         
+  Olá, António Silva                     
+                                         
+     
+    Selecionar empresa               
+    Empresa A, Lda.                  
+     
+                                         
+  Documentos — Empresa A                 
+                                         
+  [Todos ]  [2023 ]                  
+                                         
+     
+    Comparativo IVA                 
+   Dezembro 2023                      
+   15/12/2023                         
+                                      
+      [   Download  ]                
+     
+                                         
+     
+    Extrato Bancário                
+   Janeiro 2023                       
+   02/01/2023                         
+                                      
+      [   Download  ]                
+     
+                                         
+  Nenhum documento para 2022             
+                                         
+
 ```
 
 **Regras:**
@@ -465,7 +465,7 @@ Usar **sempre** componentes shadcn/ui. Não criar componentes customizados de in
 |----------|----------|------|
 | Sem empresas | "Ainda não há empresas registadas." | Botão "Adicionar primeira empresa" |
 | Sem documentos | "Ainda não há documentos para esta empresa." | Botão "Carregar primeiro documento" |
-| Sem aprovações pendentes | "Não há documentos pendentes de aprovação. 🎉" | — |
+| Sem aprovações pendentes | "Não há documentos pendentes de aprovação. " | — |
 | Sem resultados de pesquisa | "Nenhum resultado para 'xxx'." | Link "Limpar filtros" |
 | Portal sem docs | "A sua consultoria ainda não disponibilizou documentos." | — |
 

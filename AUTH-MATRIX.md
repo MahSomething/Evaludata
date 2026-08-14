@@ -10,9 +10,9 @@
 
 ```
 Super Admin
-    └── Admin (Owner da Consultoria)
-            ├── Contabilista
-            └── Cliente
+     Admin (Owner da Consultoria)
+             Contabilista
+             Cliente
 ```
 
 **Regra geral:** Um role nunca pode ver/modificar dados de outra `organizacao_id`. Exceção: Super Admin.
@@ -23,10 +23,10 @@ Super Admin
 
 | Ação | Super Admin | Admin | Contabilista | Cliente |
 |------|:-----------:|:-----:|:------------:|:-------:|
-| SELECT | ✅ Todas | ✅ Própria | ✅ Própria | ✅ Própria |
-| INSERT | ✅ | ❌ | ❌ | ❌ |
-| UPDATE | ✅ (tudo) | ✅ (própria, exceto `pode_registar_clientes`) | ❌ | ❌ |
-| DELETE | ✅ | ❌ | ❌ | ❌ |
+| SELECT |  Todas |  Própria |  Própria |  Própria |
+| INSERT |  |  |  |  |
+| UPDATE |  (tudo) |  (própria, exceto `pode_registar_clientes`) |  |  |
+| DELETE |  |  |  |  |
 
 ### RLS Policies (exemplo SQL)
 
@@ -61,10 +61,10 @@ CREATE POLICY "organizacoes_update" ON organizacoes
 
 | Ação | Super Admin | Admin | Contabilista | Cliente |
 |------|:-----------:|:-----:|:------------:|:-------:|
-| SELECT | ✅ Todas | ✅ Da sua org (exceto Super Admin) | ✅ Próprio perfil | ✅ Próprio perfil |
-| INSERT | ✅ | ✅ (contabilistas e clientes da sua org, se permitido) | ❌ | ❌ |
-| UPDATE | ✅ | ✅ (da sua org, exceto Super Admin) | ✅ (próprio perfil, limitado) | ✅ (próprio perfil, limitado) |
-| DELETE | ✅ (soft: ativo=false) | ❌ | ❌ | ❌ |
+| SELECT |  Todas |  Da sua org (exceto Super Admin) |  Próprio perfil |  Próprio perfil |
+| INSERT |  |  (contabilistas e clientes da sua org, se permitido) |  |  |
+| UPDATE |  |  (da sua org, exceto Super Admin) |  (próprio perfil, limitado) |  (próprio perfil, limitado) |
+| DELETE |  (soft: ativo=false) |  |  |  |
 
 ### Regras Específicas
 
@@ -113,10 +113,10 @@ CREATE POLICY "utilizadores_insert" ON utilizadores
 
 | Ação | Super Admin | Admin | Contabilista | Cliente |
 |------|:-----------:|:-----:|:------------:|:-------:|
-| SELECT | ✅ Todas | ✅ Da sua org | ✅ Atribuídas | ✅ Atribuídas |
-| INSERT | ✅ | ✅ (sua org) | ❌ | ❌ |
-| UPDATE | ✅ | ✅ (sua org) | ❌ | ❌ |
-| DELETE | ✅ (soft) | ✅ (soft) | ❌ | ❌ |
+| SELECT |  Todas |  Da sua org |  Atribuídas |  Atribuídas |
+| INSERT |  |  (sua org) |  |  |
+| UPDATE |  |  (sua org) |  |  |
+| DELETE |  (soft) |  (soft) |  |  |
 
 ### RLS Policies (exemplo SQL)
 
@@ -154,10 +154,10 @@ CREATE POLICY "empresas_update" ON empresas
 
 | Ação | Super Admin | Admin | Contabilista | Cliente |
 |------|:-----------:|:-----:|:------------:|:-------:|
-| SELECT | ✅ Todas | ✅ Da sua org | ✅ Próprias | ❌ |
-| INSERT | ✅ | ✅ (sua org) | ❌ | ❌ |
-| UPDATE | ✅ | ✅ (sua org) | ❌ | ❌ |
-| DELETE | ✅ | ✅ (sua org) | ❌ | ❌ |
+| SELECT |  Todas |  Da sua org |  Próprias |  |
+| INSERT |  |  (sua org) |  |  |
+| UPDATE |  |  (sua org) |  |  |
+| DELETE |  |  (sua org) |  |  |
 
 ### RLS Policies (exemplo SQL)
 
@@ -191,10 +191,10 @@ CREATE POLICY "contabilista_empresas_write" ON contabilista_empresas
 
 | Ação | Super Admin | Admin | Contabilista | Cliente |
 |------|:-----------:|:-----:|:------------:|:-------:|
-| SELECT | ✅ Todas | ✅ Da sua org | ❌ | ✅ Próprias |
-| INSERT | ✅ | ✅ (se `pode_registar_clientes`) | ❌ | ❌ |
-| UPDATE | ✅ | ✅ (sua org) | ❌ | ❌ |
-| DELETE | ✅ | ✅ (sua org) | ❌ | ❌ |
+| SELECT |  Todas |  Da sua org |  |  Próprias |
+| INSERT |  |  (se `pode_registar_clientes`) |  |  |
+| UPDATE |  |  (sua org) |  |  |
+| DELETE |  |  (sua org) |  |  |
 
 ### RLS Policies (exemplo SQL)
 
@@ -231,10 +231,10 @@ CREATE POLICY "cliente_empresas_insert" ON cliente_empresas
 
 | Ação | Super Admin | Admin | Contabilista | Cliente |
 |------|:-----------:|:-----:|:------------:|:-------:|
-| SELECT | ✅ Todas | ✅ Da sua org | ✅ Empresas atribuídas | ✅ Empresas atribuídas (apenas `ativo`) |
-| INSERT | ✅ | ✅ (sua org) | ✅ (empresas atribuídas) | ❌ |
-| UPDATE | ✅ | ✅ (aprovação/rejeição) | ✅ (próprios docs, metadados) | ❌ |
-| DELETE | ✅ (soft) | ✅ (soft) | ❌ | ❌ |
+| SELECT |  Todas |  Da sua org |  Empresas atribuídas |  Empresas atribuídas (apenas `ativo`) |
+| INSERT |  |  (sua org) |  (empresas atribuídas) |  |
+| UPDATE |  |  (aprovação/rejeição) |  (próprios docs, metadados) |  |
+| DELETE |  (soft) |  (soft) |  |  |
 
 ### Estados do Documento
 
@@ -328,10 +328,10 @@ CREATE POLICY "documentos_update" ON documentos
 
 | Ação | Super Admin | Admin | Contabilista | Cliente |
 |------|:-----------:|:-----:|:------------:|:-------:|
-| SELECT | ✅ Todas | ✅ Da sua org | ✅ Próprio | ✅ Próprio |
-| INSERT | ✅ (sistema) | ✅ (sistema) | ✅ (sistema) | ✅ (sistema) |
-| UPDATE | ❌ | ❌ | ❌ | ❌ |
-| DELETE | ❌ | ❌ | ❌ | ❌ |
+| SELECT |  Todas |  Da sua org |  Próprio |  Próprio |
+| INSERT |  (sistema) |  (sistema) |  (sistema) |  (sistema) |
+| UPDATE |  |  |  |  |
+| DELETE |  |  |  |  |
 
 ### Regras
 
@@ -366,27 +366,27 @@ CREATE POLICY "log_acessos_insert" ON log_acessos
 
 ```
 Contabilista faz upload de NOVO documento
-    └── estado = 'ativo' (não precisa de aprovação, é a primeira versão)
+     estado = 'ativo' (não precisa de aprovação, é a primeira versão)
 
 Contabilista faz upload de SUBSTITUIÇÃO
-    ├── Guarda novo ficheiro
-    ├── Cria registo com estado = 'pendente'
-    ├── Guarda referência: substitui_id = documento antigo
-    └── Notifica Admin (badge na UI)
+     Guarda novo ficheiro
+     Cria registo com estado = 'pendente'
+     Guarda referência: substitui_id = documento antigo
+     Notifica Admin (badge na UI)
 
 Admin vê lista de pendentes
-    ├── APROVA
-    │   ├── Novo documento: estado = 'ativo'
-    │   ├── Antigo documento: estado = 'arquivado'
-    │   └── Log: "aprovou substituição"
-    └── REJEITA
-        ├── Novo documento: estado = 'rejeitado'
-        ├── Antigo documento: mantém 'ativo'
-        └── Log: "rejeitou substituição"
+     APROVA
+        Novo documento: estado = 'ativo'
+        Antigo documento: estado = 'arquivado'
+        Log: "aprovou substituição"
+     REJEITA
+         Novo documento: estado = 'rejeitado'
+         Antigo documento: mantém 'ativo'
+         Log: "rejeitou substituição"
 
 Documento 'rejeitado' ou 'eliminado'
-    └── data_soft_delete = NOW()
-        └── Após 90 dias: job automático elimina ficheiro + registo
+     data_soft_delete = NOW()
+         Após 90 dias: job automático elimina ficheiro + registo
 ```
 
 ---
@@ -395,12 +395,12 @@ Documento 'rejeitado' ou 'eliminado'
 
 ```
 Admin clica "Eliminar" no documento
-    └── estado = 'eliminado'
-        └── data_soft_delete = NOW()
-            └── Desaparece da UI normal
-                └── Visível apenas em painel de auditoria/reciclagem
-                    └── Job diário verifica: data_soft_delete < NOW() - INTERVAL '90 days'
-                        └── ELIMINAÇÃO FÍSICA: ficheiro do storage + registo da BD
+     estado = 'eliminado'
+         data_soft_delete = NOW()
+             Desaparece da UI normal
+                 Visível apenas em painel de auditoria/reciclagem
+                     Job diário verifica: data_soft_delete < NOW() - INTERVAL '90 days'
+                         ELIMINAÇÃO FÍSICA: ficheiro do storage + registo da BD
 ```
 
 ### Implementação do Job

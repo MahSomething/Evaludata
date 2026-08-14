@@ -55,15 +55,15 @@ Criar no root do projeto Next.js:
 
 ```
 supabase/
-├── config.toml              # Configuração do projeto local
-├── migrations/              # Migrations versionadas (SQL)
-│   ├── 20240814120000_initial_schema.sql
-│   ├── 20240814130000_add_otp_codes.sql
-│   └── ...
-├── seed.sql                 # Dados iniciais (Super Admin, tipos de documento)
-└── functions/               # Edge Functions (TypeScript/Deno)
-    └── cleanup/
-        └── index.ts
+ config.toml              # Configuração do projeto local
+ migrations/              # Migrations versionadas (SQL)
+    20240814120000_initial_schema.sql
+    20240814130000_add_otp_codes.sql
+    ...
+ seed.sql                 # Dados iniciais (Super Admin, tipos de documento)
+ functions/               # Edge Functions (TypeScript/Deno)
+     cleanup/
+         index.ts
 ```
 
 Inicializar:

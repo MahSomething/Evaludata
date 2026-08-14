@@ -9,23 +9,23 @@
 ## 1. Visão Geral do Fluxo
 
 ```
-┌─────────────┐     1. Introduz número de telemóvel    ┌──────────────┐
-│   Cliente   │ ──────────────────────────────────────> │   Portal     │
-│  (WhatsApp) │                                        │   /portal    │
-└─────────────┘                                        └──────────────┘
-      │                                                        │
-      │     2. Servidor gera OTP (6 dígitos)                  │
-      │     3. Envia OTP via WhatsApp API                     │
-      │ <─────────────────────────────────────────────────────│
-      │                                                        │
-      │     4. Cliente introduz OTP no portal                 │
-      │ ─────────────────────────────────────────────────────>│
-      │                                                        │
-      │     5. Servidor valida OTP                            │
-      │     6. Cria sessão Supabase (JWT com claims)          │
-      │ <─────────────────────────────────────────────────────│
-      │                                                        │
-      │     7. Cliente acede ao portal (empresas + docs)      │
+     1. Introduz número de telemóvel    
+   Cliente    >    Portal     
+  (WhatsApp)                                            /portal    
+                                        
+                                                              
+           2. Servidor gera OTP (6 dígitos)                  
+           3. Envia OTP via WhatsApp API                     
+       <
+                                                              
+           4. Cliente introduz OTP no portal                 
+       >
+                                                              
+           5. Servidor valida OTP                            
+           6. Cria sessão Supabase (JWT com claims)          
+       <
+                                                              
+           7. Cliente acede ao portal (empresas + docs)      
 ```
 
 ---
