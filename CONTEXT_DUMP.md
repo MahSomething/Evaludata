@@ -1,13 +1,13 @@
 # CONTEXT DUMP — Evaludata
 > Resumo completo do estado do projeto para transferencia entre sessoes.
-> Gerado: 2026-08-14
+> Gerado: 2026-08-15
 > Repositorio: https://github.com/MahSomething/Evaludata
 
 ---
 
 ## 1. O que e o Evaludata
 
-Sistema de gestao documental multi-tenant para consultorias de contabilidade em Moçambique.
+Sistema de gestao documental multi-tenant para consultorias de contabilidade em Mocambique.
 
 **Problema real resolvido:** Consultorias perdem tempo a procurar documentos fiscais (Comparativos IVA, Relatorios IRS, Extratos Bancarios) espalhados por pastas, emails e drives. O sistema centraliza, organiza por cliente/ano/tipo, e permite ao cliente aceder via portal.
 
@@ -52,13 +52,13 @@ Sistema de gestao documental multi-tenant para consultorias de contabilidade em 
 
 ```
 organizacoes          — consultorias (multi-tenant)
-  id, nome, nuit, owner_id, pode_registar_clientes, ativa
+  id, nome, nif, owner_id, pode_registar_clientes, ativa
 
 utilizadores          — todos os que tem login
   id, organizacao_id, email, nome, papel (enum), telemovel, ativo, criado_por
 
 empresas              — clientes da contabilidade
-  id, organizacao_id, nome, nuit, contacto, ativa
+  id, organizacao_id, nome, nif, contacto, ativa
 
 contabilista_empresas — matriz: quais empresas cada contabilista ve
   id, contabilista_id, empresa_id, atribuido_por
@@ -132,7 +132,7 @@ Super Admin
 4. Rejeitar: novo fica 'rejeitado', antigo mantem 'ativo', data_soft_delete = NOW()
 
 ### 6.3 Login do Cliente (Portal)
-1. Introduz numero de telemovel (formato: 351912345678)
+1. Introduz numero de telemovel (formato: 258XXXXXXXXX)
 2. Servidor gera OTP (6 digitos), guarda em `otp_codes` (expira 10 min)
 3. Envia OTP via Evolution API (WhatsApp)
 4. Cliente introduz OTP (6 caixas, auto-focus)
@@ -161,6 +161,7 @@ Super Admin
 | BACKLOG.md | 48 tarefas em 9 Epicos, estimativas, dependencias, criterios de aceitacao |
 | UX-DESIGN.md | Principios de UX, design system, wireframes de 7 ecras, estados vazios/erro/loading, responsividade, acessibilidade |
 | SECURITY.md | Classificacao de dados, 10 pontos criticos, 6 nice-to-have, checklist por tarefa, resposta a incidentes, GDPR/OCC |
+| SECURITY_CHECKLIST.md | Checklist de seguranca por cenario (login, upload, criacao de utilizadores, etc.) |
 
 ---
 
@@ -169,50 +170,36 @@ Super Admin
 **Branch:** main
 **Migrations SQL:** 10 (001 a 010)
 **Seed:** supabase/seed.sql (tipos de documento + instrucoes Super Admin)
-**Commits:** 6
-
-```
-6a36ddc docs: documentacao inicial do projeto
-00c0639 feat(db): migration 001 — tabela organizacoes
-9a64c2d feat(db): migration 002 — tabela utilizadores
-bc87d1c feat(db): migration 003 — tabela empresas
-ecde175 feat(db): migration 004/005 — tabelas de ligacao
-c269bfd feat(db): migration 006 — tabela documentos
-00586b7 feat(db): migration 007/008 — log_acessos e otp_codes
-d512f37 feat(db): migration 009/010 + seed — custom claims e tipos_documento
-34d0be9 chore: renomear CLAUDE.md → KIMI.md
-9a8831a docs: SECURITY.md + limpeza de emojis
-```
+**Commits:** 10+
 
 ---
 
 ## 9. Tarefas Concluidas
 
-**Epico 1: Fundacao da BD (COMPLETO)**
+### Epico 1: Fundacao da BD (COMPLETO)
 - DB-001 a DB-013: 10 migrations + seed
 - DB-011: Custom Claims hook
 - DB-012: Seed data
+
+### Epico 2: Setup Next.js 16 (COMPLETO)
+- INF-001: Inicializar projeto (npx shadcn@latest init)
+- INF-002: Configurar Supabase SSR (3 clientes tipados com <Database>)
+- INF-003: Configurar Supabase CLI
+- INF-004: Gerar tipos TypeScript (10 tabelas + helper types)
+- INF-005: Instalar Zod + React Hook Form
+
+### Epico 3: Auth Interno (COMPLETO)
+- BE-001: Server Action login email/senha (com rate limiting, formato padrao {success, error, data}, logger)
+- BE-002: Server Action logout
+- BE-003: Server Action criar utilizador (com admin client, permissao correta, password temporaria, logAudit)
+- FE-001: Pagina /login (Server Component, redireciona autenticados)
+- FE-002: Layout protegido dashboard (redireciona cliente para /portal)
 
 ---
 
 ## 10. Proximas Tarefas (Backlog)
 
-**Epico 2: Setup Next.js 16**
-- INF-001: Inicializar projeto (npx shadcn@latest init)
-- INF-002: Configurar Supabase SSR (3 clientes)
-- INF-003: Configurar Supabase CLI
-- INF-004: Gerar tipos TypeScript
-- INF-005: Instalar Zod + React Hook Form
-
-**Epico 3: Auth Interno**
-- BE-001: Server Action login email/senha
-- BE-002: Server Action logout
-- BE-003: Server Action criar utilizador
-- FE-001: Pagina /login
-- FE-002: Layout protegido dashboard
-- QA-002: Testar fluxo login
-
-**Epico 4: Gestao de Empresas**
+### Epico 4: Gestao de Empresas
 - BE-004: CRUD empresas
 - FE-003: Lista de empresas
 - FE-004: Modal criar/editar empresa
@@ -220,7 +207,7 @@ d512f37 feat(db): migration 009/010 + seed — custom claims e tipos_documento
 - FE-005: Componente atribuicao
 - QA-003: Testar CRUD empresas
 
-**Epico 5: Upload R2**
+### Epico 5: Upload R2
 - INF-006: Cliente S3 R2
 - BE-006: Server Action signed URL upload
 - BE-007: Confirmar upload
@@ -229,14 +216,14 @@ d512f37 feat(db): migration 009/010 + seed — custom claims e tipos_documento
 - FE-007: Pagina documentos da empresa
 - QA-004: Testar upload/download
 
-**Epico 6: Aprovacao**
+### Epico 6: Aprovacao
 - BE-009: Submeter nova versao
 - BE-010: Aprovar/rejeitar
 - FE-008: Pagina aprovacoes
 - FE-009: Badge notificacoes (Realtime)
 - QA-005: Testar fluxo aprovacao
 
-**Epico 7: Portal Cliente**
+### Epico 7: Portal Cliente
 - INF-007: Configurar Evolution API
 - BE-011: Enviar OTP WhatsApp
 - BE-012: Pedir OTP
@@ -246,14 +233,14 @@ d512f37 feat(db): migration 009/010 + seed — custom claims e tipos_documento
 - BE-014: Listar documentos cliente
 - QA-006: Testar portal completo
 
-**Epico 8: Auditoria**
+### Epico 8: Auditoria
 - BE-015: Edge Function cleanup
 - INF-008: Cron job
 - BE-016: Registar log de acesso
 - FE-012: Pagina auditoria
 - QA-007: Testar cleanup
 
-**Epico 9: Deploy**
+### Epico 9: Deploy
 - INF-009: Deploy Vercel
 - QA-008: Pentest leve
 - INF-010: Documentacao final
@@ -309,13 +296,12 @@ SESSION_SECRET=
 
 10. **await params em Next.js 16** — params e searchParams sao assincronos.
 
----
+11. **'use client' NUNCA em page.tsx** — extrair para componente separado.
 
-## 13. Contacto / Contexto
+12. **Formato padrao de retorno das Server Actions:** `{ success: boolean, error: string | null, data: any | null }`.
 
-- Repositorio: https://github.com/MahSomething/Evaludata
-- Stack: Next.js 16 + Supabase + R2 + Tailwind v4 + shadcn/ui
-- Publico-alvo: Consultorias de contabilidade em Moçambique
-- Multi-tenant: sim, com organization_id em todas as tabelas
-- Cliente externo: sim, portal com OTP WhatsApp
-- OCR: NAO (fase 2, se necessario)
+13. **Usar lib/logger.ts** em todas as Server Actions — nunca console.log.
+
+14. **Projeto para Mocambique** — NUIT em vez de NIF, formato de telemovel +258.
+
+15. **Deixar de usar CONTEXT_DUMP como fonte primaria** — ler sempre do repositorio e dos documentos MD.
