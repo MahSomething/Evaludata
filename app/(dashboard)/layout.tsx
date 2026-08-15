@@ -17,7 +17,12 @@ export default async function DashboardLayout({
     redirect("/login");
   }
 
-  const papel = user.user_metadata?.papel as string;
+  const papel = (user.app_metadata?.papel || user.user_metadata?.papel) as string;
+
+  // Cliente nao acede ao dashboard
+  if (papel === "cliente") {
+    redirect("/portal");
+  }
 
   return (
     <div className="min-h-screen flex">
@@ -41,11 +46,11 @@ export default async function DashboardLayout({
               Utilizadores
             </Link>
           )}
-          {papel === "admin" || papel === "super_admin" ? (
+          {(papel === "admin" || papel === "super_admin") && (
             <Link href="/aprovacoes" className="block px-3 py-2 rounded-md hover:bg-muted text-sm">
               Aprovacoes
             </Link>
-          ) : null}
+          )}
           <Link href="/auditoria" className="block px-3 py-2 rounded-md hover:bg-muted text-sm">
             Auditoria
           </Link>
