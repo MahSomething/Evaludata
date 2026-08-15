@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
 
@@ -26,7 +27,8 @@ export async function createUser(prevState: CreateUserState, formData: FormData)
     return { errors: { general: ["Nao autenticado"] }, message: "Acesso negado." };
   }
 
-  const papel = user.user_metadata?.papel as string;
+  // Com Custom Claims, o papel esta no JWT claims
+  const papel = (user.app_metadata?.papel || user.user_metadata?.papel) as string;
   if (!["super_admin", "admin"].includes(papel)) {
     return { errors: { general: ["Permissao insuficiente"] }, message: "Acesso negado." };
   }
@@ -49,7 +51,9 @@ export async function createUser(prevState: CreateUserState, formData: FormData)
 
   const { email, password, nome, papel: novoPapel, telemovel, organizacao_id } = validated.data;
 
-  const { data: authData, error: authError } = await supabase.auth.admin.createUser({
+  // Usar admin client com Service Role Key
+  const adminClient = createAdminClient();
+  const { data: authData, error: authError } = await adminClient.auth.admin.createUser({
     email,
     password,
     email_confirm: true,
