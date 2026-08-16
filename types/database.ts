@@ -90,7 +90,7 @@ export interface Database {
           id: string;
           organizacao_id: string;
           nome: string;
-          nif: string;
+          nuit: string;
           contacto: string | null;
           ativa: boolean;
           criada_em: string;
@@ -100,7 +100,7 @@ export interface Database {
           id?: string;
           organizacao_id: string;
           nome: string;
-          nif: string;
+          nuit: string;
           contacto?: string | null;
           ativa?: boolean;
           criada_em?: string;
