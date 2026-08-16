@@ -1,5 +1,5 @@
 import { criarEmpresa } from "@/app/actions/empresas";
-import { EmpresaForm } from "@/components/forms/empresa-form";
+import { EmpresaForm } from "@/components/ui/forms/empresa-form";
 
 export default function NovaEmpresaPage() {
   return (
