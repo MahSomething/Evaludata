@@ -1,3 +1,11 @@
+# CONTEXT_DUMP.md — Estado do Projeto Evaludata
+&gt; Atualizado: 2026-08-16
+&gt; Batch concluido: Epico 4 — Gestao de Empresas (completo)
+
+---
+
+## Estrutura de Ficheiros Atual
+
 # CONTEXT DUMP — Evaludata
 > Resumo completo do estado do projeto para transferencia entre sessoes.
 > Gerado: 2026-08-15
